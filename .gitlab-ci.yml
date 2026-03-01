@@ -9,13 +9,14 @@ variables:
 
 before_script:
   - echo "Pipeline started on $CI_RUNNER_DESCRIPTION"
+  - docker version
+  - docker info
 
 build_job:
   stage: build
   image: docker:latest
   script:
     - echo "Building Docker image..."
-    - docker info
     - docker build -t my-app .
 
 test_job:
