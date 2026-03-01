@@ -1,6 +1,8 @@
+cat << 'EOF' > .gitlab-ci.yml
 stages:
   - build
   - test
+  - deploy
 
 variables:
   DOCKER_HOST: unix:///var/run/docker.sock
@@ -13,13 +15,22 @@ build_job:
   stage: build
   image: docker:latest
   script:
-    - echo "Building project..."
+    - echo "Building Docker image..."
     - docker info
     - docker build -t my-app .
 
 test_job:
   stage: test
-  image: alpine:latest
+  image: docker:latest
   script:
-    - echo "Running tests..."
-    - echo "Tests passed"
+    - echo "Running container tests..."
+    - docker run --rm my-app
+
+deploy_job:
+  stage: deploy
+  image: docker:latest
+  script:
+    - echo "Deploying app locally..."
+    - docker run -d --name my-app-run my-app
+    - docker ps
+EOF
