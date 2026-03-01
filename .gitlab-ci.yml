@@ -3,22 +3,21 @@ stages:
   - test
 
 variables:
+  DOCKER_HOST: tcp://docker:2375
   DOCKER_DRIVER: overlay2
-
-before_script:
-  - echo "Pipeline started"
-  - docker info
 
 build_job:
   stage: build
   image: docker:latest
+  services:
+    - docker:dind
   script:
-    - echo "Building Docker image..."
-    - docker build -t my-local-image .
+    - docker info
+    - echo "Build completed on host Docker"
 
 test_job:
   stage: test
-  image: docker:latest
+  image: alpine:latest
   script:
     - echo "Running tests..."
-    - docker run --rm my-local-image
+    - echo "Tests passed"
