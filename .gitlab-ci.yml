@@ -1,4 +1,3 @@
-cat << 'EOF' > .gitlab-ci.yml
 stages:
   - build
   - test
@@ -33,4 +32,3 @@ deploy_job:
     - echo "Deploying app locally..."
     - docker run -d --name my-app-run my-app
     - docker ps
-EOF
