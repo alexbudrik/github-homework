@@ -4,36 +4,21 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay2
-  GIT_STRATEGY: clone
 
 before_script:
   - echo "Pipeline started"
-  - echo "Running on $(uname -a)"
-  - docker info || echo "Docker not available, skipping"
+  - docker info
 
-# --- Build job ---
 build_job:
   stage: build
   image: docker:latest
   script:
-    - echo "Building project..."
-    # Собираем простой Docker образ проекта (можно заменить на свой Dockerfile)
+    - echo "Building Docker image..."
     - docker build -t my-local-image .
 
-# --- Test job ---
 test_job:
   stage: test
   image: docker:latest
   script:
     - echo "Running tests..."
-    # Пример проверки, что образ собрался
-    - docker images | grep my-local-image || echo "Image not found"
-    - echo "Tests passed"
-
-# --- Optional: cleanup job ---
-cleanup_job:
-  stage: test
-  image: docker:latest
-  script:
-    - echo "Cleaning up..."
-    - docker rmi my-local-image || echo "No image to remove"
+    - docker run --rm my-local-image
