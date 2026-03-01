@@ -1,34 +1,18 @@
-stages:
-  - build
-  - test
-  - deploy
-
-variables:
-  DOCKER_HOST: unix:///var/run/docker.sock
-  DOCKER_DRIVER: overlay2
-
-before_script:
-  - echo "Pipeline started on $CI_RUNNER_DESCRIPTION"
-  - docker version
-  - docker info
-
 build_job:
   stage: build
-  image: docker:latest
+  image: docker:latest  # optional, can remove if using shell executor
   script:
     - echo "Building Docker image..."
     - docker build -t my-app .
 
 test_job:
   stage: test
-  image: docker:latest
   script:
     - echo "Running container tests..."
     - docker run --rm my-app
 
 deploy_job:
   stage: deploy
-  image: docker:latest
   script:
     - echo "Deploying app locally..."
     - docker run -d --name my-app-run my-app
