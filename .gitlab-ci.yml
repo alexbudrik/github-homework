@@ -2,19 +2,27 @@ stages:
   - build
   - test
 
+variables:
+  DOCKER_DRIVER: overlay2
+  GITLAB_HOST: http://host.docker.internal:8181
+
+before_script:
+  - echo "Pipeline started on $GITLAB_HOST"
+
 build_job:
   stage: build
-  image: alpine:latest
-  tags:
-    - docker
+  image: docker:latest
+  services:
+    - docker:dind
   script:
     - echo "Building project..."
+    - docker info
+    # Клонировать проект с локального GitLab
+    - git clone $GITLAB_HOST/root/sdvps-materials.git
 
 test_job:
   stage: test
   image: alpine:latest
-  tags:
-    - docker
   script:
     - echo "Running tests..."
     - echo "Tests passed"
