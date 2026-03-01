@@ -4,25 +4,36 @@ stages:
 
 variables:
   DOCKER_DRIVER: overlay2
-  GITLAB_HOST: http://host.docker.internal:8181
+  GIT_STRATEGY: clone
 
 before_script:
-  - echo "Pipeline started on $GITLAB_HOST"
+  - echo "Pipeline started"
+  - echo "Running on $(uname -a)"
+  - docker info || echo "Docker not available, skipping"
 
+# --- Build job ---
 build_job:
   stage: build
   image: docker:latest
-  services:
-    - docker:dind
   script:
     - echo "Building project..."
-    - docker info
-    # Клонировать проект с локального GitLab
-    - git clone $GITLAB_HOST/root/sdvps-materials.git
+    # Собираем простой Docker образ проекта (можно заменить на свой Dockerfile)
+    - docker build -t my-local-image .
 
+# --- Test job ---
 test_job:
   stage: test
-  image: alpine:latest
+  image: docker:latest
   script:
     - echo "Running tests..."
+    # Пример проверки, что образ собрался
+    - docker images | grep my-local-image || echo "Image not found"
     - echo "Tests passed"
+
+# --- Optional: cleanup job ---
+cleanup_job:
+  stage: test
+  image: docker:latest
+  script:
+    - echo "Cleaning up..."
+    - docker rmi my-local-image || echo "No image to remove"
