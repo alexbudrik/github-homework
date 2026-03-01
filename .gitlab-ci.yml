@@ -1,8 +1,16 @@
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - echo "Pipeline started on $CI_RUNNER_DESCRIPTION"
+
 build_job:
   stage: build
-  image: docker:latest  # optional, can remove if using shell executor
   script:
     - echo "Building Docker image..."
+    - docker info
     - docker build -t my-app .
 
 test_job:
