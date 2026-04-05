@@ -50,3 +50,40 @@ sudo systemctl restart apache2
 Пароль: zabbix
 
 ![runner](https://github.com/alexbudrik/github-homework/blob/main/screenshots/Screenshot%202026-02-28%20212645.png)
+
+# Задание 2. Установка Zabbix Agent
+
+## 1. Установка агента
+
+sudo apt install zabbix-agent -y
+
+## 2. Настройка агента
+
+Редактируем:
+sudo nano /etc/zabbix/zabbix_agentd.conf
+Указываем:
+
+Server=<10.0.2.3>
+ServerActive=<10.0.2.3_ZABBIX_SERVER>
+Hostname=<ABBIX_SERVER>
+
+## 3. Запуск агента
+
+sudo systemctl restart zabbix-agent
+sudo systemctl enable zabbix-agent
+
+## 4. Добавление хостов в Zabbix
+
+Перейти в Configuration → Hosts
+Нажать Create Host
+Указать:
+Hostname
+IP адрес
+Добавить группу (Linux servers)
+Добавить шаблон:
+Linux by Zabbix agent
+
+![Hosts](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195249.png)
+![Server](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195449.png)
+![Agent](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195513.png)
+
