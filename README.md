@@ -49,7 +49,7 @@ sudo systemctl restart apache2
 Логин: Admin
 Пароль: zabbix
 
-![runner](https://github.com/alexbudrik/github-homework/blob/main/screenshots/Screenshot%202026-02-28%20212645.png)
+![runner](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-03-09%20001637.png)
 
 # Задание 2. Установка Zabbix Agent
 
