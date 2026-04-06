@@ -1,6 +1,18 @@
 # Задание 1: Установка Zabbix Server с веб-интерфейсом
 
-## 1. Установка PostgreSQL
+
+## 1. Скачивание и уставнока repo
+
+wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_latest+debian13_all.deb
+sudo dpkg -i zabbix-release_latest+debian13_all.deb
+sudo apt update
+
+### 2. Установка пакетов Zabbix
+
+sudo apt install zabbix-server-pgsql zabbix-frontend-php zabbix-apache-conf zabbix-agent postgresql
+
+
+#### 3. Установка PostgreSQL
 
 sudo apt update
 sudo apt install -y postgresql postgresql-contrib
@@ -8,20 +20,20 @@ sudo systemctl enable postgresql
 sudo systemctl start postgresql
 sudo -u postgres psql -c "\du"
 
-## 2. Создание пользователя и базы данных для Zabbix
+##### 4. Создание пользователя и базы данных для Zabbix
 
 sudo -u postgres createuser --pwprompt zabbix
 sudo -u postgres createdb -O zabbix zabbix
 sudo -u postgres psql -d zabbix -c "ALTER USER zabbix WITH SUPERUSER;"
 
-## 3.Установка зависимостей
+###### 5.Установка зависимостей
 
 sudo apt install -y \
     build-essential libpcre3-dev libssl-dev libcurl4-openssl-dev libxml2-dev \
     libsnmp-dev libevent-dev libssh2-1-dev libmariadb-dev php-cli php-mbstring \
     php-gd php-bcmath php-xml php-pgsql apache2 wget tar make cmake
 
-## 4.Добавление репозиториев Zabbix и установка Zabbix Server
+####### 6.Добавление репозиториев Zabbix и установка Zabbix Server
 
 wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_7.0-1+debian12_all.deb
 sudo dpkg -i zabbix-release_7.0-1+debian12_all.deb
@@ -35,14 +47,14 @@ sudo nano /etc/zabbix/zabbix_server.conf
 # DBUser=zabbix
 # DBPassword=<ваш пароль>
 
-## 6.Запуск и проверка Zabbix Server
+######## 7.Запуск и проверка Zabbix Server
 sudo systemctl daemon-reload
 sudo systemctl enable zabbix-server
 sudo systemctl restart zabbix-server
 sudo systemctl status zabbix-server
 sudo systemctl restart apache2
 
-## 7. Настройка веб-интерфейса
+######### 8. Настройка веб-интерфейса
 
 браузер: http://10.1.0.1/zabbix/setup.php
 Вход в веб-интерфейс:
@@ -57,7 +69,7 @@ sudo systemctl restart apache2
 
 sudo apt install zabbix-agent -y
 
-## 2. Настройка агента
+### 2. Настройка агента
 
 Редактируем:
 sudo nano /etc/zabbix/zabbix_agentd.conf
@@ -67,12 +79,12 @@ Server=<10.0.2.3>
 ServerActive=<10.0.2.3_ZABBIX_SERVER>
 Hostname=<ABBIX_SERVER>
 
-## 3. Запуск агента
+#### 3. Запуск агента
 
 sudo systemctl restart zabbix-agent
 sudo systemctl enable zabbix-agent
 
-## 4. Добавление хостов в Zabbix
+#### 4. Добавление хостов в Zabbix
 
 Перейти в Configuration → Hosts
 Нажать Create Host
@@ -86,4 +98,6 @@ Linux by Zabbix agent
 ![Hosts](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195249.png)
 ![Server](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195449.png)
 ![Agent](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195513.png)
-
+![AgentLogs](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-06%20110304.png)
+![AgentLastData](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/agent%20latest%20data.png)
+![ServerLastData](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/server%20latest%20data.png)
