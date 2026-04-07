@@ -98,6 +98,6 @@ Linux by Zabbix agent
 ![Hosts](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195249.png)
 ![Server](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195449.png)
 ![Agent](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-05%20195513.png)
-![AgentLogs](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/Screenshot%202026-04-06%20110304.png)
+![AgentLogs](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/agent%20logs.png)
 ![AgentLastData](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/agent%20latest%20data.png)
 ![ServerLastData](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/server%20latest%20data.png)
