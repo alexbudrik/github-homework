@@ -4,7 +4,7 @@
 * Настройте балансировку Round-robin на 4 уровне.
 * На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
   
-[Конфигурационный файл haproxy.cfg](https://github.com/alexbudrik/sys-pattern-homework/blob/main/haproxy%202.cfg)
+[Конфигурационный файл haproxy.cfg](https://github.com/alexbudrik/sys-pattern-homework/blob/main/Configs/haproxy%202.cfg)
 
 ![ngynx](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/ngynx_1.png)
 
@@ -14,6 +14,6 @@
 * HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
 * На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 
-[Конфигурационный файл haproxy.cfg](https://github.com/alexbudrik/sys-pattern-homework/blob/main/haproxy.cfg)
+[Конфигурационный файл haproxy.cfg](https://github.com/alexbudrik/sys-pattern-homework/blob/main/Configs/haproxy.cfg)
 
 ![ngynx3](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/ngynx_3.png)
