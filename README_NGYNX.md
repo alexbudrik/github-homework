@@ -17,3 +17,4 @@
 [Конфигурационный файл haproxy.cfg](https://github.com/alexbudrik/sys-pattern-homework/blob/main/Configs/haproxy.cfg)
 
 ![ngynx3](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/ngynx_3.png)
+![ngynx3](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/ngynx_2.png)
