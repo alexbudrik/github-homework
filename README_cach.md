@@ -35,4 +35,4 @@ API сторонних сервисов могут отвечать медлен
 
 # Задание 3: Удаление по TTL в Memcached.
 
-![cash](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/cash%20-%201.png)
+![cash](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/cash%20-%202.png)
