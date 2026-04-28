@@ -39,4 +39,4 @@ API сторонних сервисов могут отвечать медлен
 
 # Задание 4: Запись данных в Redis.
 
-![cash]()
+![cash](https://github.com/alexbudrik/sys-pattern-homework/blob/main/screenshots/cash%20-%203.png)
